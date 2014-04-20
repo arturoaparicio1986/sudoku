@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Sudoku - Online!</title>
+		<link rel="stylesheet" type="text/css" href="sudoku.css">
+		<script src="SudokuBoard.js"></script>
+		<script src="SudokuRunner.js"></script>
+	</head>
+	<body>
+		<div class="canvas-container">
+			<canvas id="canvas" width="400px" height="400px">
+				<div class="nocanvas">
+					<h3>Your browser does not support the canvas tag</h3>
+					<p>
+					Upgrade to something that is not laughably obselete. Try the latest 
+					version of <a href="http://firefox.com">Firefox</a> if you are into 
+					Open Source projects. My personal favorite is  
+					<a href="http://www.google.com/chrome">Chrome</a>. You can also try the 
+					latest Internet Explorer as a last resort.
+					</p>
+					<p>It may also be that you need to enable Javascript or turn off compatibility mode on Internet Explorer.</p>
+				</div>
+			</canvas>
+		</div>
+		<div class="bottom-controls">
+			<div id="info-box">Sudoku!</div>
+			<button onclick="verifyBoard()">Check Validity</button>
+			<button onclick="solveBoard()">Solve</button>
+			<button onclick="newPuzzle()">New Puzzle</button>
+			<button onclick="clearBoard()">Clear Board</button>
+		</div>
+	</body>
+</html>

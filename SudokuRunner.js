@@ -124,9 +124,7 @@ function getRequest(url, success, error) {
     return req;
 }
 
-// This can be replaced with Javascript equivalent to make the entire 
-// application pure JavaScript.
-jQuery(function()
+window.onload=(function()
 {
 	startSudoku('canvas', 400);
 });
