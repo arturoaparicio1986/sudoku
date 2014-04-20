@@ -3,88 +3,88 @@ var sudokuBoard = null;
 
 function setText(text)
 {
-	document.getElementById('info-box').innerHTML = text;
+  document.getElementById('info-box').innerHTML = text;
 }
 
 function startSudoku(canvID, dimen)
 {
   sudokuBoard = new SudokuBoard(canvID, dimen);
-	setText("Sudoku");
+  setText("Sudoku");
 }
 
 function verifyBoard()
 {
   if (sudokuBoard != null)
-	{
-		if (sudokuBoard.isValid())
-			setText('Valid');
-		else
-			setText('Not Valid');
-	}
+  {
+    if (sudokuBoard.isValid())
+      setText('Valid');
+    else
+      setText('Not Valid');
+  }
 }
 
 function solveBoard()
 {
   if (sudokuBoard != null)
-	{
-		if (sudokuBoard.isValid())
-		{
-			sudokuBoard.solve();
-			if (sudokuBoard.isFilled())
-				setText('Solved!');
-			else
-				setText('Not Valid');
-			sudokuBoard.refresh();
-		} else
-		{
-			setText('Not Valid');
-		}
-	}
+  {
+    if (sudokuBoard.isValid())
+    {
+      sudokuBoard.solve();
+      if (sudokuBoard.isFilled())
+        setText('Solved!');
+      else
+        setText('Not Valid');
+      sudokuBoard.refresh();
+    } else
+    {
+      setText('Not Valid');
+    }
+  }
 }
 
 // Asks a server to generate a new puzzle
 function newPuzzle(difficulty)
 {
   if (sudokuBoard != null)
-	{
-		getRequest("http://thefreebit.com/sites/all/scripts/generatePuzzle.php?difficulty=" + difficulty, 
-			function(response)
-			{
-				var nPuzzle = JSON.parse(response);
-				if (nPuzzle.length == 0)
-				{
-					setText("Failed. Try again.");
-					return;
-				}
-				sudokuBoard.newBoard(nPuzzle);
-				setText("New Puzzle");
-			}, 
-			function()
-			{
-				setText("Failed. Try again.");
-			}
-		);
-	}
+  {
+    getRequest("http://thefreebit.com/sites/all/scripts/generatePuzzle.php?difficulty=" + difficulty, 
+      function(response)
+      {
+        var nPuzzle = JSON.parse(response);
+        if (nPuzzle.length == 0)
+        {
+          setText("Failed. Try again.");
+          return;
+        }
+        sudokuBoard.newBoard(nPuzzle);
+        setText("New Puzzle");
+      }, 
+      function()
+      {
+        setText("Failed. Try again.");
+      }
+    );
+  }
 }
 
 // Clears the board
 function clearBoard()
 {
   if (sudokuBoard != null)
-	{
-		sudokuBoard.newBoard();
-		setText("Board Cleared");
-	}
+  {
+    sudokuBoard.newBoard();
+    setText("Board Cleared");
+  }
 }
 
 // Set entry
 function setEntry(entry)
 {
   if (sudokuBoard != null)
-	{
-		sudokuBoard.setEntry(entry);
-	}
-	return false;
+  {
+    sudokuBoard.setEntry(entry);
+  }
+  return false;
 }
 
 
@@ -126,5 +126,5 @@ function getRequest(url, success, error) {
 
 window.onload=(function()
 {
-	startSudoku('canvas', 400);
+  startSudoku('canvas', 400);
 });
